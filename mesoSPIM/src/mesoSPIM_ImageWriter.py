@@ -379,6 +379,8 @@ class mesoSPIM_ImageWriter(QtCore.QObject):
             write_line(file, "camera_line_interval", self.state["camera_line_interval"])
             write_line(file, "x_pixels", self.cfg.camera_parameters["x_pixels"])
             write_line(file, "y_pixels", self.cfg.camera_parameters["y_pixels"])
+            write_line(file, "x_binning", self.cfg.camera_parameters["x_binning"])
+            write_line(file, "y_binning", self.cfg.camera_parameters["y_binning"])
 
     @QtCore.pyqtSlot(Acquisition, AcquisitionList)
     def write_metadata(self, acq, acq_list):
@@ -455,6 +457,12 @@ class mesoSPIM_ImageWriter(QtCore.QObject):
         )
         write_line(
             self.metadata_file, "y_pixels", self.cfg.camera_parameters["y_pixels"]
+        )
+        write_line(
+            self.metadata_file, "x_binning", self.cfg.camera_parameters["x_binning"]
+        )
+        write_line(
+            self.metadata_file, "y_binning", self.cfg.camera_parameters["y_binning"]
         )
         write_line(self.metadata_file)
         self.metadata_file.close()
