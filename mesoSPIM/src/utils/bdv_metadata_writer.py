@@ -62,7 +62,7 @@ def write_bdv_metadata_only(acq_list, px_size_um=1.0, z_step=None, out_path=None
         if tile_str not in tiles:
             tiles.append(tile_str)
 
-    flip_flags = (False, False, False)
+    flip_flags = (True, True, False)  # Default flip flags for mesoSPIM
 
     # For each acquisition, call append_view with correct indices and affine
     for acq in acq_list:
